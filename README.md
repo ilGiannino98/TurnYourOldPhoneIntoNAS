@@ -128,53 +128,44 @@ The `--perm.admin` option grants administrator permissions.
 
 ---
 
+
 # 👥 5. Create additional users
 
-You can create multiple users.
+You can create multiple users and restrict each one to a specific directory using `--scope`.
 
-Each user can be restricted to a specific directory using `--scope`.
+> **Note:** The directory MUST exist on your phone before adding the user, and you must use the absolute path `/storage/emulated/0/...`.
 
-For example:
-
+First, create the folders for your users:
 ```bash
-./filebrowser users add user1 Password123 --scope ~/storage/user1
+mkdir -p /storage/emulated/0/user1
+mkdir -p /storage/emulated/0/user2
 ```
-
-Another user:
-
+Then, add the users with their respective scopes:
 ```bash
-./filebrowser users add user2 Password456 --scope ~/storage/user2
+./filebrowser users add user1 Password123 --scope /storage/emulated/0/user1
+./filebrowser users add user2 Password456 --scope /storage/emulated/0/user2
 ```
-
 With this configuration:
+user1 → /storage/emulated/0/user1
+user2 → /storage/emulated/0/user2
 
-```text
-user1 → ~/storage/user1
-user2 → ~/storage/user2
-```
+user1 will only have access to their assigned scope, while user2 will have their own scope.
 
-`user1` will only have access to their assigned scope, while `user2` will have their own scope.
+File Browser officially supports the --scope option for restricting a user's accessible directory.
 
-File Browser officially supports the `--scope` option for restricting a user's accessible directory.
-
-> **⚠️ Important:** Make sure the directories you specify actually exist and have the appropriate permissions.
-
----
 
 # 🌐 6. Find your phone's IP address
 
-Run:
+    Open Settings on your Android device.
 
-```bash
-ip addr show wlan0 | grep "inet " | awk '{print $2}' | cut -d/ -f1
-```
+    Go to Network & Internet (or Connections) and select Wi-Fi.
 
-You should get an address similar to:
+    Tap the Gear icon (⚙️) next to the Wi-Fi network you are connected to.
 
-```text
-192.168.1.25
-```
+    Scroll down until you see the IP address entry (or tap Advanced / Details if it's hidden).
 
+    Note down the address (it usually starts with 192.168.x.x or 10.x.x.x).
+    
 ### ⚠️ Save this IP address
 
 You will need it to connect to the server from another device.
