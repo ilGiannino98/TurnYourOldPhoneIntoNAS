@@ -71,11 +71,12 @@ Then update the Termux packages:
 ```bash
 pkg update && pkg upgrade -y
 ```
+if the command seems stuck press enter
 
 Install `wget`:
 
 ```bash
-pkg install wget
+pkg install wget -y
 ```
 
 ---
@@ -140,6 +141,14 @@ First, create the folders for your users:
 mkdir -p /storage/emulated/0/user1
 mkdir -p /storage/emulated/0/user2
 ```
+Then do this command.
+```bash
+./filebrowser config set -r /storage/emulated/0/user1
+./filebrowser config set -r /storage/emulated/0/user2
+```
+
+
+
 Then, add the users with their respective scopes:
 ```bash
 ./filebrowser users add user1 Password123 --scope /storage/emulated/0/user1
@@ -151,7 +160,7 @@ user2 → /storage/emulated/0/user2
 
 user1 will only have access to their assigned scope, while user2 will have their own scope.
 
-File Browser officially supports the --scope option for restricting a user's accessible directory.
+Naturally you can replace "user1" or "user2" with any name of your choice
 
 
 # 🌐 6. Find your phone's IP address
