@@ -2,15 +2,15 @@
 
 set -e
 
-echo "The installation is starting."
+echo "The installation is starting..."
 
-echo "installing tar  and termux-api. please wait.."
+echo "-----installing tar and termux-api. please wait....."
 
 pkg install  tar termux-api -y > /dev/null 2>&1
 
-echo "tar successfully installed."
+echo "----tar successfully installed-----"
 
-echo "installing file browser"
+echo "-----installing filebrowser-----"
 
 
 wget -q "https://github.com/filebrowser/filebrowser/releases/download/v2.63.23/linux-arm64-filebrowser.tar.gz" 
